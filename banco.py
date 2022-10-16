@@ -8,6 +8,10 @@ def menu():
 	print("*Extrato[1]\n*Deposito[2]\n*Saque[3]\n*Pix[4]\n*Encerrar[5]")
 	print(30*"*")
 
+def hora_registro():
+	data_atual = datetime.now()
+	movimentacao[data_atual.strftime('%d/%m/%Y %H:%M:%S')] = cenario
+
 while True:
 	menu()
 	opcao = int(input("O que deseja realizar? "))
@@ -25,8 +29,7 @@ while True:
 				ultima_operacao += valor_depositado
 				extrato.append(ultima_operacao)
 				cenario = f"Deposito no valor de R${valor_depositado:.2f} realizado"
-				data_atual = datetime.now()
-				movimentacao[data_atual.strftime('%d/%m/%Y %H:%M:%S')] = cenario
+				hora_registro()
 				print("Deposito realizado com sucesso!")
 				break
 			elif valor_depositado == 0:
@@ -42,8 +45,7 @@ while True:
 			ultima_operacao -= valor_saque
 			extrato.append(ultima_operacao)
 			cenario = f"Saque no valor de R${valor_saque:.2f} realizado"
-			data_atual = datetime.now()
-			movimentacao[data_atual.strftime('%d/%m/%Y %H:%M:%S')] = cenario
+			hora_registro()
 			print("Saque realizado com sucesso!")
 	elif opcao == 4:
 		valor_pix = float(input("Digite o valor a ser transferido R$: "))
@@ -54,8 +56,7 @@ while True:
 			ultima_operacao -= valor_pix
 			extrato.append(ultima_operacao)
 			cenario = f"Pix no valor de R${valor_pix:.2f} realizado"
-			data_atual = datetime.now()
-			movimentacao[data_atual.strftime('%d/%m/%Y %H:%M:%S')] = cenario
+			hora_registro()
 			print("Pix realizado com sucesso!")
 	else:
 		break
