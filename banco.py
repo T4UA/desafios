@@ -11,6 +11,7 @@ def menu():
 def hora_registro():
 	data_atual = datetime.now()
 	movimentacao[data_atual.strftime('%d/%m/%Y %H:%M:%S')] = cenario
+	print("Operação realizada com sucesso!")
 
 while True:
 	menu()
@@ -30,7 +31,6 @@ while True:
 				extrato.append(ultima_operacao)
 				cenario = f"Deposito no valor de R${valor_depositado:.2f} realizado"
 				hora_registro()
-				print("Deposito realizado com sucesso!")
 				break
 			elif valor_depositado == 0:
 				break
@@ -46,7 +46,6 @@ while True:
 			extrato.append(ultima_operacao)
 			cenario = f"Saque no valor de R${valor_saque:.2f} realizado"
 			hora_registro()
-			print("Saque realizado com sucesso!")
 	elif opcao == 4:
 		valor_pix = float(input("Digite o valor a ser transferido R$: "))
 		ultima_operacao = extrato[-1]
@@ -57,6 +56,5 @@ while True:
 			extrato.append(ultima_operacao)
 			cenario = f"Pix no valor de R${valor_pix:.2f} realizado"
 			hora_registro()
-			print("Pix realizado com sucesso!")
 	else:
 		break
